@@ -1,0 +1,26 @@
+module Control_unit(opcode, to_alu,r_we, bran_r_or_imd, memable, mem_r_w, con_alu_in2);
+input [3:0] opcode;
+output [3:0] to_alu;
+output r_we;
+output bran_r_or_imd;
+output memable;
+output mem_r_w;
+output [1:0] con_alu_in2;//00-reg, 01-4-ex, 10-8-ex
+
+assign to_alu = opcode;
+assign r_we = ~opcode[3] | 
+                (opcode[3] & opcode[2] & opcode[1] & ~opcode[0]) | 
+                (opcode[3] & ~opcode[2] & ((~opcode[1] & ~opcode[0]) | (opcode[1] & ~opcode[0]) | (opcode[1] & opcode[0])));
+assign bran_r_or_imd = opcode[0];
+assign memable = opcode[3] & ~opcode[2];
+assign mem_r_w = ~((~opcode[1] & ~opcode[0]) | (opcode[1] & ~opcode[0]) | (opcode[1] & opcode[0]));
+assign con_alu_in2[0] = (~opcode[3] & opcode[2] & ~opcode[1] & ~opcode[0]) |
+                        (~opcode[3] & opcode[2] & ~opcode[1] & opcode[0]) |
+                        (~opcode[3] & opcode[2] & opcode[1] & ~opcode[0]) |
+                        (opcode[3] & ~opcode[2] & ~opcode[1] & ~opcode[0]) |
+                        (opcode[3] & ~opcode[2] & ~opcode[1] & opcode[0]);
+assign con_alu_in2[1] = (opcode[3] & ~opcode[2] & opcode[1] & ~opcode[0]) |
+                        (opcode[3] & ~opcode[2] & opcode[1] & opcode[0]);
+                        
+
+endmodule

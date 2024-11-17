@@ -1,0 +1,16 @@
+End of file addsub.v. Hash = 1105870549
+End of file ALU.v. Hash = 2119759922
+End of file bitcell.v. Hash = -717043083
+End of file CLA.v. Hash = 631295418
+End of file cpu.v. Hash = -997067853
+End of file decoder_en.v. Hash = -532693408
+End of file decoder.v. Hash = 2019638677
+End of file Decode.v. Hash = 1294713622
+End of file flag.v. Hash = 2032244037
+End of file PC_ctrl.v. Hash = 1622772079
+End of file PFA.v. Hash = 1561395992
+End of file PSA.v. Hash = 1565255637
+End of file RED.v. Hash = -1240757801
+End of file regfile.v. Hash = -121674968
+End of file reg.v. Hash = -1124321515
+End of file shifter.v. Hash = -275360877
